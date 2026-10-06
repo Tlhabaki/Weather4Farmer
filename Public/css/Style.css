@@ -1,0 +1,72 @@
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.navbar {
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.navbar-brand {
+    color: #123b2a;
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    color: #1d2939;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: #198754;
+    font-weight: 600;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #102a43;
+}
+
+.hero {
+    min-height: 550px;
+    background-image: url("/images/farm-hero..png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 4rem;
+    line-height: 1.05;
+}
+
+.hero h1 span {
+    color: #b7e4c7;
+}
+
+.hero p {
+    color: white;
+    max-width: 500px;
+}
+
+.search-box {
+    max-width: 650px;
+}
