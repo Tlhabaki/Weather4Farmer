@@ -70,3 +70,45 @@ body {
 .search-box {
     max-width: 650px;
 }
+
+.weather-card {
+    max-width: 600px;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.weather-card h2 {
+    color: #123b2a;
+    margin-bottom: 20px;
+}
+
+.current-temperature {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #123b2a;
+}
+
+.weather-card p {
+    color: #667085;
+    margin-bottom: 0;
+}
+
+.weather-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.weather-stats div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-stats span {
+    color: #667085;
+    font-size: 0.95rem;
+}

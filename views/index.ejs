@@ -4,72 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather4farmer</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
+
     <nav class="navbar bg-white">
-    <div class="container">
+        <div class="container">
 
-        <a class="navbar-brand fw-bold" href="#">
-            Weather4Farmer
-        </a>
+            <a class="navbar-brand fw-bold" href="#">
+                Weather4Farmer
+            </a>
 
-        <div class="navbar-nav nav-links">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Forecast</a>
-            <a class="nav-link" href="#">About</a>
+            <div class="navbar-nav nav-links">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Forecast</a>
+                <a class="nav-link" href="#">About</a>
+            </div>
+
         </div>
+    </nav>
 
-    </div>
-</nav>
 
- <section class="hero">
-    <div class="container hero-content">
+    <section class="hero">
+        <div class="container hero-content">
 
-        <h1 class="display-3 fw-bold">
-            Know the weather.<br>
-            <span>For the farm.</span>
-        </h1>
+            <h1 class="display-3 fw-bold">
+                Know the weather.<br>
+                <span>For the farm.</span>
+            </h1>
 
-        <p class="lead">
-            Weather information to help farmers make better decisions.
-        </p>
+            <p class="lead">
+                Weather information to help farmers make better decisions.
+            </p>
 
-        <div class="input-group search-box">
-            <input
-                type="text"
-                class="form-control"
-                placeholder="Enter a town or location">
+            <div class="input-group search-box">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter a town or location">
 
-            <button class="btn btn-success">
-                Search
-            </button>
+                <button class="btn btn-success">
+                    Search
+                </button>
+            </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
 
     <div class="container py-5">
 
-        <h1 class="text-center mb-5">Weather4farmer</h1>
+        <div class="weather-card mx-auto">
 
-        <div class="card text-center shadow-sm mx-auto" style="max-width: 400px;">
-            <div class="card-body">
+            <h2>Today's Weather</h2>
 
-                <h2 class="card-title">Today's Weather</h2>
+            <p>Current temperature</p>
 
-                <p class="display-4 fw-bold">
-                    <%= todayMax %>°C
-                </p>
+            <div class="current-temperature">
+                <%= todayTemperature %>°C
+            </div>
 
-                <p class="text-muted">Maximum temperature</p>
+            <div class="weather-stats">
+
+                <div>
+                    <strong><%= todayMin %>°C</strong>
+                    <span>Low</span>
+                </div>
+
+                <div>
+                    <strong><%= todayHumidity %>%</strong>
+                    <span>Humidity</span>
+                </div>
+
+                <div>
+                    <strong><%= todayRain %> mm</strong>
+                    <span>Rain</span>
+                </div>
+
+                <div>
+                    <strong><%= todayMax %>°C</strong>
+                    <span>High</span>
+                </div>
 
             </div>
+
         </div>
 
     </div>
-
 
 </body>
 </html>
