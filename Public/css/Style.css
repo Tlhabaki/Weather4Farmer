@@ -112,3 +112,33 @@ body {
     color: #667085;
     font-size: 0.95rem;
 }
+
+
+.rainfall-forecast {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.rainfall-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 10px;
+    background: white;
+    border: 1px solid #e8eee9;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+.rainfall-day span {
+    color: #667085;
+    font-size: 0.85rem;
+}
+
+.rainfall-day strong {
+    color: #123b2a;
+    font-size: 1.1rem;
+}

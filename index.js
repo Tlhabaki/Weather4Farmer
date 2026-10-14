@@ -7,7 +7,7 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
-    const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-25.5903949&longitude=28.1544429&daily=temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,rain_sum&hourly=temperature_2m,rain,wind_direction_10m,soil_temperature_6cm&current=rain,precipitation,temperature_2m,relative_humidity_2m&timezone=auto");
+    const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-25.5903949&longitude=28.1544429&daily=temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,rain_sum&hourly=temperature_2m,rain,wind_direction_10m,soil_temperature_6cm&current=rain,precipitation,temperature_2m,relative_humidity_2m&timezone=auto&forecast_days=7");
 
         const todayTemperature = response.data.current.temperature_2m;
         const todayHumidity = response.data.current.relative_humidity_2m;
@@ -17,6 +17,7 @@ app.get("/", async (req, res) => {
         const todayMin = response.data.daily.temperature_2m_min[0];
 
         const rainForecast = response.data.daily.rain_sum;
+        const rainDates = response.data.daily.time;
 
     console.log(response.data.current.temperature_2m);
     res.render("index.ejs",{ todayTemperature: todayTemperature,
@@ -24,7 +25,8 @@ app.get("/", async (req, res) => {
                             todayRain: todayRain,
                             todayMax: todayMax,
                             todayMin: todayMin,
-                            rainForecast: rainForecast});
+                            rainForecast: rainForecast,
+                            rainDates: rainDates});
 });
 
 app.listen(port, () => {

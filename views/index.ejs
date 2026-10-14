@@ -95,5 +95,19 @@
 
     </div>
 
+    <section class="container py-4">
+        <h2>7-Day Rainfall Forecast</h2>
+
+        <div class="rainfall-forecast">
+            <% rainForecast.forEach((rain, index) => { %>
+                <div class="rainfall-day">
+                    <span><%= rainDates[index] %></span>
+                    <strong><%= rain %> mm</strong>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+
 </body>
 </html>
