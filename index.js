@@ -1,7 +1,6 @@
 import express from "express";
 import axios from "axios";
 
-
 const app = express();
 const port = 3000;
 app.use(express.static("public"));
@@ -18,6 +17,13 @@ app.get("/", async (req, res) => {
 
         const rainForecast = response.data.daily.rain_sum;
         const rainDates = response.data.daily.time;
+        const formattedRainDates = rainDates.map((date) => {
+            return new Date(date + "T12:00:00").toLocaleDateString("en-GB", {
+                weekday: "short",
+                day: "numeric",
+                month: "short"
+            });
+        });
 
     console.log(response.data.current.temperature_2m);
     res.render("index.ejs",{ todayTemperature: todayTemperature,
@@ -26,7 +32,8 @@ app.get("/", async (req, res) => {
                             todayMax: todayMax,
                             todayMin: todayMin,
                             rainForecast: rainForecast,
-                            rainDates: rainDates});
+                            rainDates: rainDates,
+                            formattedRainDates: formattedRainDates,});
 });
 
 app.listen(port, () => {
