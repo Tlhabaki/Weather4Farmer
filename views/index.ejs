@@ -55,6 +55,18 @@
     </section>
 
 
+   
+<% if (typeof error !== "undefined") { %>
+
+    <div class="container py-5">
+        <div class="alert alert-warning text-center mx-auto" role="alert">
+            <h4 class="alert-heading">Weather information unavailable</h4>
+            <p class="mb-0"><%= error %></p>
+        </div>
+    </div>
+
+<% } else { %>
+
     <div class="container py-5">
 
         <div class="weather-card mx-auto">
@@ -73,7 +85,7 @@
                     <strong><%= todayMin %>°C</strong>
                     <span>Low</span>
                 </div>
-                
+
                 <div>
                     <strong><%= todayMax %>°C</strong>
                     <span>High</span>
@@ -107,6 +119,9 @@
             <% }) %>
         </div>
     </section>
+
+<% } %>
+
 
 
 </body>

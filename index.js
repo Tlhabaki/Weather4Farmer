@@ -6,6 +6,9 @@ const port = 3000;
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
+
+    try {
+        
     const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-25.5903949&longitude=28.1544429&daily=temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,rain_sum&hourly=temperature_2m,rain,wind_direction_10m,soil_temperature_6cm&current=rain,precipitation,temperature_2m,relative_humidity_2m&timezone=auto&forecast_days=7");
 
         const todayTemperature = response.data.current.temperature_2m;
@@ -34,7 +37,20 @@ app.get("/", async (req, res) => {
                             rainForecast: rainForecast,
                             rainDates: rainDates,
                             formattedRainDates: formattedRainDates,});
+
+
+  } catch (error) {
+
+        console.error("Error fetching weather data:", error.message);
+
+        res.status(500).render("index.ejs", {
+            error: "Weather information is temporarily unavailable. Please try again later."
+        });
+
+    }
+
 });
+
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
