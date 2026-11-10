@@ -8,17 +8,21 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
 
     try {
-        
+    
+    // Request current weather and a seven-day forecast from Open-Meteo.    
     const response = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-25.5903949&longitude=28.1544429&daily=temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,rain_sum&hourly=temperature_2m,rain,wind_direction_10m,soil_temperature_6cm&current=rain,precipitation,temperature_2m,relative_humidity_2m&timezone=auto&forecast_days=7");
 
         const todayTemperature = response.data.current.temperature_2m;
         const todayHumidity = response.data.current.relative_humidity_2m;
         const todayRain = response.data.current.rain;
-
+        
+    // Extract the current weather measurements from the API response.
         const todayMax = response.data.daily.temperature_2m_max[0];
         const todayMin = response.data.daily.temperature_2m_min[0];
-
+     
         const rainForecast = response.data.daily.rain_sum;
+
+        //Format API dates into a more readable format for display.
         const rainDates = response.data.daily.time;
         const formattedRainDates = rainDates.map((date) => {
             return new Date(date + "T12:00:00").toLocaleDateString("en-GB", {
